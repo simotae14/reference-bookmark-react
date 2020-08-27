@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
 
+import './index.css';
+
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Hello World</h1>
+    <div className="container">
+      <h1>Hello World</h1>
+    </div>  
+    {/* React.createElement('h1', {
+      className: 'title'
+    }, 'Hello World') */}
   </React.StrictMode>,
   document.getElementById('root')
 );
