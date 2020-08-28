@@ -9,11 +9,20 @@ import React from 'react';
 
 // Class Component
 class App extends React.Component {
+  state = {
+    counter: 0
+  }
+  increment = (num) => {
+    this.setState({
+      counter: this.state.counter + num
+    });
+  }
   render() {
     return (
       <div className="container">
-        <h1>Hello World</h1>
-        <h2>Hey Guys</h2>
+        <h1>Counter Application: {this.state.counter}</h1>
+        <button onClick={() => this.increment(1)}>Increment</button>
+        <button onClick={() => this.increment(-1)}>Decrement</button>
       </div>
     );
   }
