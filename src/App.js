@@ -9,9 +9,17 @@ import React from 'react';
 
 // Class Component
 class App extends React.Component {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     counter: 0
+  //   };
+  // }
+
   state = {
     counter: 0
-  }
+  };
+  
   increment = (num) => {
     this.setState({
       counter: this.state.counter + num
