@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 
-const App = () => {
+import AppView from './AppView';
+
+const App = (props) => {
   const [ counter, setCounter ] = useState(0);
-  const [ title, setTitle ] = useState('My Counter appplication');
   
   const increment = num => () => {
     setCounter(counter + num);
   }
+
+  const testFunction = () => {
+    alert('executing function');
+  }
   return (
     <div className="container">
-      <h1>{title}: {counter}</h1>
+      <AppView
+        testFunction={testFunction}
+        counter={counter} 
+        {...props}
+      />
       <button onClick={increment(1)}>Increment</button>
       <button onClick={increment(-1)}>Decrement</button>
     </div>
@@ -42,11 +51,19 @@ const App = () => {
 //   //   }
 //   // }
 //   render() {
+//     const {
+//       title,
+//       magicNum
+//     } = this.props;
+//     const {
+//       counter
+//     } = this.state;
 //     return (
 //       <div className="container">
-        // <h1>Counter Application: {this.state.counter}</h1>
-        // <button onClick={this.increment(1)}>Increment</button>
-        // <button onClick={this.increment(-1)}>Decrement</button>
+//         <h1>{title}: {counter}</h1>
+//         <p>{magicNum}</p>
+//         <button onClick={this.increment(1)}>Increment</button>
+//         <button onClick={this.increment(-1)}>Decrement</button>
 //       </div>
 //     );
 //   }
