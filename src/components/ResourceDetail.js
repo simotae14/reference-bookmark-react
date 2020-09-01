@@ -1,15 +1,15 @@
 import React from 'react';
 
-const ResourceDetail = ({selectedResource}) => {
+const ResourceDetail = ({resource}) => {
   return (
     <div className="card">
       <div className="card-header">
-        {selectedResource.title}
+        {resource.title}
       </div>
       <div className="card-body">
         <blockquote className="blockquote mb-0">
-          <p>{selectedResource.description}</p>
-          <footer className="text-muted mb-2">{selectedResource.type}</footer>
+          <p>{resource.description}</p>
+          <footer className="text-muted mb-2">{resource.type}</footer>
         </blockquote>
       </div>
     </div>
