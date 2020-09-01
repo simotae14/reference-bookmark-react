@@ -1,34 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const initialResources = [
-  {
-    _id: '1',
-    title: 'Resource 1',
-    description: 'Description 1',
-    link: 'https://google.com',
-    type: 'blog'
-  },
-  {
-    _id: '2',
-    title: 'Resource 2',
-    description: 'Description 2',
-    link: 'https://google.com',
-    type: 'video'
-  },
-  {
-    _id: '3',
-    title: 'Resource 3',
-    description: 'Description 3',
-    link: 'https://google.com',
-    type: 'book'
-  }
-];
-
-const ResourceList = () => {
-  const [resourceList, setResourceList] = useState([]);
-  useEffect(() => {
-    setResourceList(initialResources)
-  }, []);
+const ResourceList = ({ resourceList }) => {
   return (
     <ul className="list-group mb-3 resource-list">
       {
