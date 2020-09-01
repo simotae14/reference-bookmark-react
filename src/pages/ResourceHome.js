@@ -60,6 +60,16 @@ const ResourceHome = () => {
           <button onClick={addResource} className="btn btn-primary">Add Resource</button>
         </div>
         <div className="col-md-8 order-md-1">
+          <h4 className="mb-3">Resource
+            <button 
+              onClick={() => setDetailView(!isDetailView)}
+              className={`btn btn-sm ml-2 ${isDetailView ? 'btn-warning' : 'btn-primary'}`}
+            >
+              {
+                isDetailView ? 'Edit' : 'Detail'
+              }
+            </button>
+          </h4>
           { isDetailView ? 
             <ResourceDetail onToggle={() => setDetailView(false)} /> : 
             <ResourceUpdate /> }          

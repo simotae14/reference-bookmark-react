@@ -1,22 +1,18 @@
 import React from 'react';
 
-const ResourceDetail = ({ onToggle }) => {
+const ResourceDetail = () => {
   return (
-    <>
-      <h4 className="mb-3">Resource Detail</h4>
-      <div className="card">
-        <div className="card-header">
-          Resource Name
-        </div>
-        <div className="card-body">
-          <blockquote className="blockquote mb-0">
-            <p>Resource description...</p>
-            <footer className="text-muted mb-2">Type</footer>
-          </blockquote>
-          <button onClick={onToggle} className="btn btn-primary">Edit</button>
-        </div>
+    <div className="card">
+      <div className="card-header">
+        Resource Name
       </div>
-    </>
+      <div className="card-body">
+        <blockquote className="blockquote mb-0">
+          <p>Resource description...</p>
+          <footer className="text-muted mb-2">Type</footer>
+        </blockquote>
+      </div>
+    </div>
   );
 };
 
