@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import ResourceSearch from '../components/ResourceSearch';
 import ResourceList from '../components/ResourceList';
@@ -32,6 +32,8 @@ const initialResources = [
 
 const ResourceHome = () => {
   const [resourceList, setResourceList] = useState(initialResources);
+  // state to toggle a component or another
+  const [isDetailView, setDetailView] = useState(true);
 
   const addResource = () => {
     const _id = `_${Math.random().toString(36).substr(2, 9)}`;
@@ -57,11 +59,10 @@ const ResourceHome = () => {
           <ResourceList resourceList={resourceList} />
           <button onClick={addResource} className="btn btn-primary">Add Resource</button>
         </div>
-        {/*<div className="col-md-8 order-md-1">
-          <ResourceUpdate />
-          </div>*/}
         <div className="col-md-8 order-md-1">
-          <ResourceDetail />
+          { isDetailView ? 
+            <ResourceDetail onToggle={() => setDetailView(false)} /> : 
+            <ResourceUpdate /> }          
         </div>
       </div>
     </div>

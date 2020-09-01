@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ResourceDetail = () => {
+const ResourceDetail = ({ onToggle }) => {
   return (
     <>
-      <h4 className="mb-3">Update Resource</h4>
+      <h4 className="mb-3">Resource Detail</h4>
       <div className="card">
         <div className="card-header">
           Resource Name
@@ -13,7 +13,7 @@ const ResourceDetail = () => {
             <p>Resource description...</p>
             <footer className="text-muted mb-2">Type</footer>
           </blockquote>
-          <a href="#" className="btn btn-primary">Edit</a>
+          <button onClick={onToggle} className="btn btn-primary">Edit</button>
         </div>
       </div>
     </>
