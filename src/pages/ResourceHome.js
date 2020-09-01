@@ -34,6 +34,8 @@ const ResourceHome = () => {
   const [resourceList, setResourceList] = useState(initialResources);
   // state to toggle a component or another
   const [isDetailView, setDetailView] = useState(true);
+  // state to define the actual Resource Selected
+  const [selectedResource, setSelectedResource] = useState({});
 
   const addResource = () => {
     const _id = `_${Math.random().toString(36).substr(2, 9)}`;
@@ -56,11 +58,11 @@ const ResourceHome = () => {
             <span className="badge badge-secondary badge-pill">6</span>
           </h4>
           <ResourceSearch />
-          <ResourceList resourceList={resourceList} />
+          <ResourceList onItemClick={setSelectedResource} resourceList={resourceList} />
           <button onClick={addResource} className="btn btn-primary">Add Resource</button>
         </div>
         <div className="col-md-8 order-md-1">
-          <h4 className="mb-3">Resource
+          <h4 className="mb-3">Resource {selectedResource._id}
             <button 
               onClick={() => setDetailView(!isDetailView)}
               className={`btn btn-sm ml-2 ${isDetailView ? 'btn-warning' : 'btn-primary'}`}
@@ -71,7 +73,7 @@ const ResourceHome = () => {
             </button>
           </h4>
           { isDetailView ? 
-            <ResourceDetail onToggle={() => setDetailView(false)} /> : 
+            <ResourceDetail selectedResource={selectedResource} onToggle={() => setDetailView(false)} /> : 
             <ResourceUpdate /> }          
         </div>
       </div>
