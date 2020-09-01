@@ -1,11 +1,15 @@
 import React from 'react';
 
-const ResourceList = ({ resourceList, onItemClick }) => {
+const ResourceList = ({ resourceList, onItemClick, activeId }) => {
   return (
     <ul className="list-group mb-3 resource-list">
       {
         resourceList.map(resource => (
-          <li onClick={() => onItemClick(resource)} key={resource._id} className="resource-list-item list-group-item d-flex justify-content-between lh-condensed">
+          <li 
+            onClick={() => onItemClick(resource)} 
+            key={resource._id} 
+            className={`${activeId === resource._id ? 'is-active ' : ''}resource-list-item list-group-item d-flex justify-content-between lh-condensed`}
+          >
             <div>
               <h6 className="my-0">{resource.title}</h6>
               <small className="text-muted">{resource.description}</small>
