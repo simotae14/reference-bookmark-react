@@ -16,8 +16,11 @@ const ResourceHome = () => {
   const [selectedResource, setSelectedResource] = useState();
 
   useEffect(() => {
-    getResources()
-      .then(res => console.log(res));
+    async function _getResources () {
+      const resources = await getResources();
+      setResourceList(resources);
+    }
+    _getResources();
   }, []);
 
   const addResource = () => {

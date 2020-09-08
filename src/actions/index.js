@@ -1,3 +1,4 @@
 import axios from 'axios';
 
-export const getResources = () => axios.get('http://localhost:3000/api/resources');
+export const getResources = () => axios.get('http://localhost:3000/api/resources')
+  .then(res => res.data);
