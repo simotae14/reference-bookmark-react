@@ -1,35 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ResourceUpdate = ({ resource }) => {
+  const [updatedResource, setUpdatedResource] = useState(resource);
+  const handleChange = (event) => {
+    setUpdatedResource({
+      ...updatedResource,
+      [event.target.name]: event.target.value
+    })
+  };
   return (
     <form>
       <div className="mb-3">
         <label htmlFor="title">Title</label>
-        <input 
-          value={resource.title}
+        <input
+          onChange={handleChange} 
+          value={updatedResource.title}
           type="text" 
           className="form-control" 
           id="title" 
+          name="title" 
           placeholder="How to survive in mountains" 
         />
       </div>
       <div className="mb-3">
         <label htmlFor="description">Description</label>
         <textarea 
+          onChange={handleChange} 
           className="form-control" 
           id="description" 
+          name="description" 
           placeholder="Just some description"
-          value={resource.description}
+          value={updatedResource.description}
         ></textarea>
       </div>
       <div className="mb-3">
         <label htmlFor="link">Resource Link</label>
         <div className="input-group">
           <input 
-            value={resource.link}
+            onChange={handleChange} 
+            value={updatedResource.link}
             type="text" 
             className="form-control" 
             id="link" 
+            name="link" 
             placeholder="Username" 
           />
         </div>
