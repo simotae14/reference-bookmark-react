@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const RESOURCE_TYPES = ['blog', 'video', 'book'];
+
 const ResourceUpdate = ({ resource }) => {
   const [updatedResource, setUpdatedResource] = useState(resource);
   const handleChange = (event) => {
@@ -7,6 +9,12 @@ const ResourceUpdate = ({ resource }) => {
       ...updatedResource,
       [event.target.name]: event.target.value
     })
+  };
+
+  const handleSubmit = (event) => {
+    // prevent the refresh of the page
+    //event.preventDefault();
+    console.log(JSON.stringify(updatedResource));
   };
   return (
     <form>
@@ -47,17 +55,30 @@ const ResourceUpdate = ({ resource }) => {
           />
         </div>
       </div>
-      {/*<div className="mb-3">
+      <div className="mb-3">
         <label htmlFor="type">Type</label>
-        <input 
-          type="text" 
-          className="form-control" 
-          id="type" 
-          placeholder="Very interesting book" 
-        />
-      </div>*/}
+        <select
+          onChange={handleChange}
+          className="form-control"
+          name="type"
+          value={updatedResource.type}
+          id="type"
+        >
+          {
+            RESOURCE_TYPES.map(type => (
+              <option key={type} value={type}>{type}</option>
+            ))
+          }
+        </select>
+      </div>
       <hr className="mb-4" />
-      <button className="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+      <button
+        onClick={handleSubmit}
+        className="btn btn-primary btn-lg btn-block" 
+        type="button"
+      >
+        Submit
+      </button>
     </form>
   );
 };
