@@ -1,9 +1,12 @@
 import React from 'react';
 import ResourceForm from './ResourceForm';
 
-const ResourceUpdate = ({ resource }) => {
-  const updateResource = (formData) => {
-    alert(JSON.stringify(formData));
+import { updateResourceApi } from '../actions/index';
+
+const ResourceUpdate = ({ resource, onResourceUpdate }) => {
+  const updateResource = async (resourceData) => {
+    const updateResource = await updateResourceApi(resourceData._id, resourceData);
+    onResourceUpdate(updateResource);
   };
   return (
     <ResourceForm 
