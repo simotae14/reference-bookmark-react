@@ -23,21 +23,24 @@ const ResourceHome = () => {
     _getResources();
   }, []);
 
-  const addResource = () => {
-    const _id = `_${Math.random().toString(36).substr(2, 9)}`;
-    const newResource = {
-      _id,
-      title: `Title ${_id}`,
-      description: `Description ${_id}`,
-      link: 'https://google.com',
-      type: 'video'
-    }
-    setResourceList([newResource, ...resourceList]);
-  };
+  const findResourceIndex = (resource) => resourceList.findIndex(r => r._id === resource._id);
+
+  const updatedResourcesList = resource => {
+    // find resource index
+    const resourceIndex = findResourceIndex(resource);
+    // create a copy of original array
+    const copy = [...resourceList];
+    // add the new resource
+    copy[resourceIndex] = resource;
+    return copy;
+  }
 
   const handleResourceUpdate = updatedResource => {
     // Update Resource List
-    alert(JSON.stringify(updatedResource));
+    const updatedResources = updatedResourcesList(updatedResource);
+    setResourceList(updatedResources);
+    // Update resource
+    setSelectedResource(updatedResource);
   }
   
   const hasResources = resourceList && resourceList.length > 0;
@@ -57,7 +60,6 @@ const ResourceHome = () => {
             resourceList={resourceList}
             activeId={activeResource?._id} 
           />
-          <button onClick={addResource} className="btn btn-primary">Add Resource</button>
         </div>
         <div className="col-md-8 order-md-1">
           <h4 className="mb-3">Resource {activeResource?._id}
