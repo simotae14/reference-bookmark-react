@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const RESOURCE_TYPES = ['blog', 'video', 'book'];
 
@@ -14,6 +14,10 @@ const ResourceForm = ({ resource, onSubmit }) => {
   const handleSubmit = () => {
     onSubmit(updatedResource);
   };
+
+  useEffect(() => {
+    setUpdatedResource(resource);
+  }, [resource]);
   return (
     <form>
       <div className="mb-3">
